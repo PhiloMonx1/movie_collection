@@ -54,10 +54,10 @@ def sign_in():
             'exp': datetime.utcnow() + timedelta(seconds=60 * 60 * 24)  # 로그인 24시간 유지
         }
         # JWT 버전 문제 ------------------------------------------------------------------ #
-        # token = jwt.encode(payload, SECRET_KEY,
-        #                    algorithm='HS256').decode('utf-8')
         token = jwt.encode(payload, SECRET_KEY,
-                           algorithm='HS256')
+                           algorithm='HS256').decode('utf-8')
+        # token = jwt.encode(payload, SECRET_KEY,
+        #                    algorithm='HS256')
 
         return jsonify({'result': 'success', 'token': token})
     # 찾지 못하면
